@@ -4,11 +4,8 @@ from src.config_database.config import config
 
 class DBCreator:
 
-    def db_connect(self):
-        db_params = config()
-        return db_params
-
     def db_create(self, db_name: str, params) -> None:
+        """Метод создания БД (hh_vacancies) и таблиц (vacancies, employers) в postgreSQL"""
 
         conn = psycopg2.connect(dbname='postgres', **params)
         conn.autocommit = True
@@ -47,6 +44,7 @@ class DBCreator:
         conn.close()
 
     def save_data_to_db(self, data_, params):
+        """Метод сохранения данных в таблицы (employers, vacancies)"""
 
         conn = psycopg2.connect(dbname='hh_vacancies', **params)
         conn.autocommit = True

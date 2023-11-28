@@ -5,6 +5,7 @@ from src.database_modules.db_manager import DBManager
 from src.utils.json_saver import JSONSaver
 from src.utils.utils import get_employers_from_txt
 
+# Интерактив с пользователем (со списком команд)
 if __name__ == '__main__':
     params = config()
 

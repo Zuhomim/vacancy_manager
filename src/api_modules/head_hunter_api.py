@@ -5,6 +5,7 @@ class HeadHunterAPI:
 
     def get_request(self, keyword: str, count_page: int, employers: list, field_name: str) -> list:
         """Метод получения вакансий по API hh.ru"""
+
         params = {
             "page": 0,
             "per_page": 50,
@@ -29,6 +30,9 @@ class HeadHunterAPI:
         return all_vacancies
 
     def get_vacancies(self, keyword: str, count_page: int, employers: list) -> list:
+        """Метод получения списка вакансий для postgreSQL (параметры:
+        name, employer_id, description, company_name, salary_from, salary_to, url"""
+
         all_vacancies = []
         vacancies = self.get_request(keyword.lower(), count_page, employers, "vacancies")
         for vacancy in vacancies:
@@ -52,6 +56,9 @@ class HeadHunterAPI:
         return all_vacancies
 
     def get_employers(self, employer_list: list):
+        """Метод получения списка компаний для postgreSQL (с параметрами:
+        employer_id, employer_name, url"""
+
         all_employers = []
         for employer_ in employer_list:
             field_name = f"employers/{employer_}"

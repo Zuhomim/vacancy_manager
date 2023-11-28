@@ -1,4 +1,6 @@
 def get_employers_from_txt(filename):
+    """Возвращает список компаний из текстового файла"""
+
     employers_ = []
     with open(filename, 'rt') as file:
         for line in file:
